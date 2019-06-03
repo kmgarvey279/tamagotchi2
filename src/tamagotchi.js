@@ -2,7 +2,7 @@ export class Tamagotchi  {
   constructor(inputtedName) {
     this.name = inputtedName;
     //tamagotchi values
-    this.foodLevel= 10;
+    this.foodLevel = 10;
     this.happinessLevel = 15;
     this.sleepinessLevel = 0;
     this.exerciseLevel = 10;
@@ -18,6 +18,37 @@ export class Tamagotchi  {
     this.sleep = this.rest(12);
     this.shortWalk = this.exercise(4);
     this.longWalk = this.exercise(8);
+  }
+
+  setType(chosenType) {
+    const bulbasaur = ["Bulbasaur", "Ivysaur", "Venusaur"];
+    const charmander = ["Charmander", "Charmeleon", "Charizard"];
+    const squirtle = ["Squirtle", "Wartortle", "Blastoise"];
+    let that = this;
+    if (chosenType == "Bulbasaur") {
+      that.species = bulbasaur;
+      that.stage = bulbasaur[0];
+    } else if (chosenType == "Squirtle") {
+      that.species = squirtle;
+      that.stage = bulbasaur[0];
+    } else {
+      that.species = charmander;
+      that.stage = charmander[0];
+    }
+  }
+
+  evolve1() {
+    var evolveTimeOut = setTimeout(function() {
+      this.stage = this.species[1];
+      return this.name + " evolved into " + this.stage + "!";
+    }, 80000);
+  }
+
+  evolve2() {
+    const evolveTimeOut = setTimeout(() => {
+      this.stage = this.species[2];
+      return this.name + " evolved into " + this.stage + "!";
+    }, 160000);
   }
 
   setHunger() {

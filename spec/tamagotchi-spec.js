@@ -2,8 +2,10 @@ import { Tamagotchi } from './../src/tamagotchi.js';
 
 describe('Tamagotchi', function() {
   let pet = new Tamagotchi("Fido");
+  var timerCallback;
 
   beforeEach(function() {
+    timerCallback = jasmine.createSpy("timerCallback");
     jasmine.clock().install();
     pet.foodLevel = 10;
     pet.happinessLevel = 15;
@@ -23,6 +25,11 @@ describe('Tamagotchi', function() {
     expect(pet.happinessLevel).toEqual(15);
     expect(pet.sleepinessLevel).toEqual(0);
   });
+
+  it('should allow the user to pick one of three pet types', function() {
+    pet.setType("Charmander");
+    expect(pet.stage).toEqual("Charmander");
+  })
 
   it('should be able to create multiple pets with different names', function() {
     let pet1 = new Tamagotchi("Lady");
@@ -105,4 +112,22 @@ describe('Tamagotchi', function() {
     pet.sleepinessLevel = 2;
     expect(pet.shortNap("short nap")).toEqual("Fido isn't tired yet.")
   })
+
+  it("causes a timeout to be called after 80000 milliseconds", function() {
+    setTimeout(function() {
+      timerCallback();
+    }, 80000);
+    expect(timerCallback).not.toHaveBeenCalled();
+    jasmine.clock().tick(80001);
+    expect(timerCallback).toHaveBeenCalled();
+  });
+
+  it("causes a timeout to be called after 160000 milliseconds", function() {
+    setTimeout(function() {
+      timerCallback();
+    }, 160000);
+    expect(timerCallback).not.toHaveBeenCalled();
+    jasmine.clock().tick(160001);
+    expect(timerCallback).toHaveBeenCalled();
+  });
 });

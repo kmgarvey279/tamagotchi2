@@ -1,14 +1,13 @@
-import { tamagotchi } from './../src/tamagotchi.js';
+import { Tamagotchi } from './../src/tamagotchi.js';
 
 describe('Tamagotchi', function() {
-  let pet = tamagotchi;
+  let pet = new Tamagotchi("Fido");
 
   beforeEach(function() {
     jasmine.clock().install();
     pet.foodLevel = 10;
     pet.happinessLevel = 15;
     pet.sleepinessLevel = 0;
-    pet.namePet("Fido");
     pet.setHunger();
     pet.setHappiness();
     pet.setSleepiness();
@@ -24,6 +23,13 @@ describe('Tamagotchi', function() {
     expect(pet.happinessLevel).toEqual(15);
     expect(pet.sleepinessLevel).toEqual(0);
   });
+
+  it('should be able to create multiple pets with different names', function() {
+    let pet1 = new Tamagotchi("Lady");
+    let pet2 = new Tamagotchi("Tramp");
+    expect(pet1.name).toEqual("Lady");
+    expect(pet2.name).toEqual("Tramp");
+  })
 
   it('should have a food level of 7 after 3001 milliseconds', function() {
     jasmine.clock().tick(3001);

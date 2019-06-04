@@ -2,19 +2,26 @@
 <html>
   <head>
     <title>Tamagotchi</title>
+     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+     <link href="styles.css" rel="stylesheet">
+     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+     <script src="main.js"></script>
+     <script src="tamagotchi.js"></script>
   </head>
-
   <body>
     <div class="container">
-      <h1>Tamagotchi</title>
+      <h1>Tamagotchi</h1>
       <h5>Pick your Pokemon!</h5>
       <form id="start">
         <div class="form-group">
-          <select id="species">
-            <option value="Bulbasaur">Bulbasaur</option>
-            <option value="Charmander">Charmander</option>
-            <option value="Squirtle">Squirtle</option>
-          </select>
+          <div id="species">
+            <input type="checkbox" id="select-bulbasaur" />
+            <label for="select-bulbasaur"><img src="img/Bulbasaur.png" weight="200px" height="200px" /></label>
+            <input type="checkbox" id="select-charmander" />
+            <label for="select-charmander"><img src="img/Charmander.png" weight="200px" height="200px" /></label>
+            <input type="checkbox" id="select-squirtle" />
+            <label for="select-squirtle"><img src="img/Squirtle.png" weight="200px" height="200px" /></label>
+          </div>
         </div>
         <h5>Pick a name!</h5>
         <div class="form-group">
@@ -22,17 +29,19 @@
           <input type="text" class="form-control" id="name">
         </div>
         <button type="button" id="confirmBtn" class="btn btn-success btn-block">Start Game</button>
-        <div class="game">
-          <span id="petName"></span>
-          <span id="petSpecies"></span>
-          <h5>Food</h5>
-          <progress id="food" value="10" max="10"></progress>
-          <h5>Sleepiness</h5>
-          <progress id="tiredness" value="0" max="24"></progress>
-          <h5>Exercise</h5>
-          <progress id="exercise" value="10" max="10"></progress>
-          <h5>Happiness</h5>
-          <progress id="happiness" value="15" max="30"></progress>
-        </div>
+      </form>
+      <div class="game">
+        <span id="petName"></span>
+        <span id="petSpecies"></span>
+        <span id="petImage"></span>
+        <h5>Food</h5>
+        <progress id="food" value="10" max="10"></progress>
+        <h5>Sleepiness</h5>
+        <progress id="tiredness" value="0" max="24"></progress>
+        <h5>Exercise</h5>
+        <progress id="exercise" value="10" max="10"></progress>
+        <h5>Happiness</h5>
+        <progress id="happiness" value="15" max="30"></progress>
       </div>
-    </body>
+    </div>
+  </body>

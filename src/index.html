@@ -4,9 +4,9 @@
     <title>Tamagotchi</title>
      <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
      <link href="styles.css" rel="stylesheet">
-     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-     <script src="main.js"></script>
-     <script src="tamagotchi.js"></script>
+     <script src="http://code.jquery.com/jquery-3.2.1.min.js"
+     integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+     crossorigin="anonymous"></script>
   </head>
   <body>
     <div class="container">
@@ -15,33 +15,98 @@
       <form id="start">
         <div class="form-group">
           <div id="species">
-            <input type="checkbox" id="select-bulbasaur" />
-            <label for="select-bulbasaur"><img src="img/Bulbasaur.png" weight="200px" height="200px" /></label>
-            <input type="checkbox" id="select-charmander" />
-            <label for="select-charmander"><img src="img/Charmander.png" weight="200px" height="200px" /></label>
-            <input type="checkbox" id="select-squirtle" />
-            <label for="select-squirtle"><img src="img/Squirtle.png" weight="200px" height="200px" /></label>
+            <input type="radio" name="select-pokemon" id="select-bulbasaur" value="Bulbasaur" required />
+            <label for="select-bulbasaur"><img src="img/Bulbasaur.png" weight="400px" height="400px" /><br>Bulbasaur</label>
+            <input type="radio" name="select-pokemon" id="select-charmander" value="Charmander" required />
+            <label for="select-charmander"><img src="img/Charmander.png" weight="400px" height="400px" /><br> Charmander</label>
+            <input type="radio" name="select-pokemon" id="select-squirtle"value="Squirtle" required />
+            <label for="select-squirtle"><img src="img/Squirtle.png" weight="400px" height="400px" /><br> Squirtle</label>
           </div>
         </div>
         <h5>Pick a name!</h5>
         <div class="form-group">
           <label for="name">Name</label>
-          <input type="text" class="form-control" id="name">
+          <input type="text" class="form-control" id="name" required>
         </div>
-        <button type="button" id="confirmBtn" class="btn btn-success btn-block">Start Game</button>
+        <button type="submit" id="confirmBtn" class="btn btn-success btn-block">Start Game</button>
       </form>
       <div class="game">
-        <span id="petName"></span>
-        <span id="petSpecies"></span>
-        <span id="petImage"></span>
-        <h5>Food</h5>
-        <progress id="food" value="10" max="10"></progress>
-        <h5>Sleepiness</h5>
-        <progress id="tiredness" value="0" max="24"></progress>
-        <h5>Exercise</h5>
-        <progress id="exercise" value="10" max="10"></progress>
-        <h5>Happiness</h5>
-        <progress id="happiness" value="15" max="30"></progress>
+        <div class="row">
+          <div class="col">
+            <span id="petName"></span>
+            <span id="petSpecies">The </span><br>
+            <span id="petImage"></span>
+          </div>
+          <div class="col">
+            <h5>Food</h5>
+            <progress id="food" value="10" max="10"></progress>
+            <h5>Sleepiness</h5>
+            <progress id="tiredness" value="0" max="24"></progress>
+            <h5>Exercise</h5>
+            <progress id="exercise" value="10" max="10"></progress>
+            <h5>Happiness</h5>
+            <progress id="happiness" value="15" max="30"></progress>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <form id="feed">
+              <img src="img/food.png" weight="120px" height="120px"><br>
+              <input type="radio" name="food-type" value="small treat">
+              <label for="food-type">Small Treat</label><br>
+              <input type="radio" name="food-type" value="bowl of food">
+              <label for="food-type">Bowl of Food</label><br>
+              <input type="radio" name="food-type" value="favorite food">
+              <label for="food-type">Favorite Food </label><br>
+              <button type="submit" id="feedBtn" class="btn btn-success">Feed</button><br>
+            </form>
+          </div>
+
+
+
+          <div class="col">
+            <form id="sleep">
+              <img src="img/sleep.png" weight="120px" height="120px"><br>
+              <input type="radio" name="sleep-short" id="sleep-short">
+              <label for="sleep-short"> Short Nap</label><br>
+              <input type="radio" name="sleep-mid" id="sleep-mid">
+              <label for="sleep-mid">Longer Nap</label><br>
+              <input type="radio" name="sleep-long" id="sleep-long">
+              <label for="sleep-long">Restful Sleep</label><br>
+              <button type="button" id="sleepBtn" class="btn btn-info">Rest</button><br>
+            </form>
+          </div>
+
+
+          <div class="col">
+            <form id="exercise">
+              <img src="img/exercise.png" weight="120px" height="120px"><br>
+              <input type="radio" name="exercise-short" id="exercise-short">
+              <label for="exercise-short">Short Walk</label><br>
+              <input type="radio" name="exercise-mid" id="exercise-mid">
+              <label for="exercise-mid">Brisk Run</label><br>
+              <input type="radio" name="exercise-long" id="exercise-long">
+              <label for="exercise-long">Intense Workout</label><br>
+              <button type="button" id="exerciseBtn" class="btn btn-warning">Exercise</button><br>
+            </form>
+          </div>
+
+
+          <div class="col">
+            <form id="play">
+              <img src="img/toy.png" weight="120px" height="120x"><br>
+              <input type="radio" name="toy-cheap" id="toy-cheap">
+              <label for="toy-cheap">Cheap Toy</label><br>
+              <input type="radio" name="toy-mid" id="toy-mid">
+              <label for="toy-mid">Midrange Toy</label><br>
+              <input type="radio" name="toy-expensive" id="toy-expensive">
+              <label for="toy-expensive">Expensive Toy</label><br>
+              <button type="button" id="playBtn" class="btn btn-danger">Play</button>
+            </form>
+          </div>
+        </div>
+        <span id="text-box"></span>
       </div>
     </div>
   </body>

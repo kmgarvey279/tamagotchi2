@@ -2,6 +2,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const path = require('path');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: './src/main.js',
@@ -20,7 +21,10 @@ module.exports = {
       title: 'Tamagotchi',
       template: './src/index.html',
       inject: 'body'
-    })
+    }),
+    new CopyWebpackPlugin ([
+      {from:'src/img', to:"img"}
+    ]),
   ],
   mode: 'development',
   module: {
@@ -50,7 +54,17 @@ module.exports = {
         options: {
           presets: ['es2015']
         }
-      }
+      },
+      {
+       test: /\.(png|jp(e*)g|svg)$/,
+       use: [{
+           loader: 'url-loader',
+           options: {
+               limit: 10000, // Convert images < 8kb to base64 strings
+               name: 'img/[hash]-[name].[ext]'
+           }
+       }]
+     }
     ]
   },
 };

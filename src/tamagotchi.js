@@ -1,4 +1,5 @@
 export class Tamagotchi  {
+
   constructor(inputtedName) {
     this.name = inputtedName;
     //tamagotchi values
@@ -9,8 +10,7 @@ export class Tamagotchi  {
     //actions that can be taken to change values
     this.eatSmall = this.feed(5);
     this.eatMedium = this.feed(7);
-    this.eatLarge = this.feed(10);
-    this.eatFavorite = this.feed(7);
+    this.eatFavorite = this.feed(5);
     this.giveCheapToy = this.play(5);
     this.giveExpensiveToy = this.play(10);
     this.shortNap = this.rest(5);
@@ -20,21 +20,25 @@ export class Tamagotchi  {
     this.longWalk = this.exercise(8);
   }
 
-  setType(chosenType) {
+  setSpecies(chosenSpecies) {
     const bulbasaur = ["Bulbasaur", "Ivysaur", "Venusaur"];
     const charmander = ["Charmander", "Charmeleon", "Charizard"];
     const squirtle = ["Squirtle", "Wartortle", "Blastoise"];
     let that = this;
-    if (chosenType == "Bulbasaur") {
+    if (chosenSpecies == "Bulbasaur") {
       that.species = bulbasaur;
       that.stage = bulbasaur[0];
-    } else if (chosenType == "Squirtle") {
+    } else if (chosenSpecies == "Squirtle") {
       that.species = squirtle;
       that.stage = bulbasaur[0];
     } else {
       that.species = charmander;
       that.stage = charmander[0];
     }
+  }
+
+  setName(newName) {
+    this.name = newName;
   }
 
   evolve1() {

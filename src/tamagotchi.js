@@ -42,17 +42,13 @@ export class Tamagotchi  {
   }
 
   evolve1() {
-    var evolveTimeOut = setTimeout(function() {
       this.stage = this.species[1];
       return this.name + " evolved into " + this.stage + "!";
-    }, 80000);
   }
 
   evolve2() {
-    const evolveTimeOut = setTimeout(() => {
       this.stage = this.species[2];
       return this.name + " evolved into " + this.stage + "!";
-    }, 160000);
   }
 
   setHunger() {

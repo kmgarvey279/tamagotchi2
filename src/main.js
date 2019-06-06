@@ -22,6 +22,7 @@ function createPet(name, species){
 
 function startTimer(){
   $("#display-time").empty().append("0:00");
+  let evolutionProgress = 0;
   let hour = 0;
   let minute = 0;
   let newTimer = setInterval(function() {
@@ -38,8 +39,15 @@ function startTimer(){
     $("#hunger-log").empty().append(newPet.setHunger());
     $("#hunger-bar").val(newPet.foodLevel);
     $("#exercise-log").empty().append(newPet.setExercise());
+    $("#exercise-bar").val(newPet.exerciseLevel);
     $("#sleep-log").empty().append(newPet.setSleepiness());
+    $("#tiredness-bar").val(newPet.sleepinessLevel);
     $("#happiness-log").empty().append(newPet.setHappiness());
+    $("#happiness-bar").val(newPet.happinessLevel);
+    evolutionProgress++
+    if(evolutionProgress == 20){
+
+    }
   }, 1000);
 }
 

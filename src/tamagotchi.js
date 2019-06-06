@@ -56,55 +56,51 @@ export class Tamagotchi  {
   }
 
   setHunger() {
-    const hungerInterval = setInterval(() => {
-      this.foodLevel--;
-      if (this.isDead() == true) {
-        clearInterval(hungerInterval);
-        return this.name + " has died of hunger!";
-      }
-      if (this.foodLevel < 6) {
-        this.happinessLevel--;
-        return this.name + " is unhappy because they needs to eat. Happiness has decreased."
-      }
-    }, 1000);
+    this.foodLevel--;
+    if (this.isDead() == true) {
+      return this.name + " has died of hunger!";
+    } else if(this.foodLevel < 6) {
+      this.happinessLevel--;
+      return this.name + " is unhappy because they needs to eat. Happiness has decreased."
+    } else {
+      return this.name + " is feeling full."
+    }
   }
 
   setHappiness() {
-    const happinessInterval = setInterval(() => {
-      this.happinessLevel--;
-      if (this.runsAway() == true && this.isDead() == false) {
-        clearInterval(happinessInterval);
-        return this.name + " ran away!";
-      }
-    }, 1000);
+    this.happinessLevel--;
+    if (this.runsAway() == true && this.isDead() == false) {
+      return this.name + " ran away!";
+    } else if(this.happinessLevel > 20) {
+      return this.name + " is really happy.";
+    } else {
+      return this.name + " is doing okay.";
+    }
   }
 
   setExercise() {
-    const happinessLevel = setInterval(() => {
-      if (this.exerciseLevel > 10){
-        this.sleepinessLevel += 2;
-        return this.name + " is worn out from exercising. They need to sleep.";
-      } else if (this.exerciseLevel < 5) {
-        this.happinessLevel--;
-        return this.name + " is unhappy because they needs to exercise. Happiness has decreased."
-      } else {
-        this.exerciseLevel--;
-      }
-    }, 1000);
+    this.exerciseLevel--;
+    if (this.exerciseLevel > 10){
+      this.sleepinessLevel += 2;
+      return this.name + " is worn out from exercising. They need to sleep.";
+    } else if (this.exerciseLevel < 5) {
+      this.happinessLevel--;
+      return this.name + " is unhappy because they needs to exercise. Happiness has decreased.";
+    } else {
+      return this.name + " has gotten enough exercise.";
+    }
   }
 
   setSleepiness() {
-    const sleepinessInterval = setInterval(() => {
-      this.sleepinessLevel++;
-      if (this.isDead() == true) {
-        clearInterval(sleepinessInterval);
-        return this.name + " has died of exhaustion!"
-      }
-      if (this.sleepinessLevel > 16) {
-        this.happinessLevel--;
-        return this.name + " is unhappy because they needs to sleep. Happiness has decreased."
-      }
-    }, 1000);
+    this.sleepinessLevel++;
+    if (this.isDead() == true) {
+      return this.name + " has died of exhaustion!";
+    } else if(this.sleepinessLevel > 16) {
+      this.happinessLevel--;
+      return this.name + " is unhappy because they needs to sleep. Happiness has decreased.";
+    } else {
+      return this.name + " is well-rested";
+    }
   }
 
   isDead() {

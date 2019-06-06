@@ -31,6 +31,7 @@
         <button type="submit" id="confirmBtn" class="btn btn-success btn-block">Start Game</button>
       </form>
       <div class="game">
+        <span id="display-time"></span>
         <div class="row">
           <div class="col">
             <span id="petName"></span>
@@ -39,13 +40,13 @@
           </div>
           <div class="col">
             <h5>Food</h5>
-            <progress id="food" value="10" max="10"></progress>
+            <progress id="hunger-bar" value="10" max="10"></progress>
             <h5>Sleepiness</h5>
-            <progress id="tiredness" value="0" max="24"></progress>
+            <progress id="tiredness-bar" value="0" max="24"></progress>
             <h5>Exercise</h5>
-            <progress id="exercise" value="10" max="10"></progress>
+            <progress id="exercise-bar" value="10" max="10"></progress>
             <h5>Happiness</h5>
-            <progress id="happiness" value="15" max="30"></progress>
+            <progress id="happiness-bar" value="15" max="30"></progress>
           </div>
         </div>
 
@@ -106,7 +107,10 @@
             </form>
           </div>
         </div>
-        <span id="text-box"></span>
+        <span id="hunger-log"></span><br>
+        <span id="exercise-log"></span><br>
+        <span id="happiness-log"></span><br>
+        <span id="sleep-log"></span><br>
       </div>
     </div>
   </body>

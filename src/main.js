@@ -6,28 +6,53 @@ import './styles.css';
 
 let newPet = new Tamagotchi("");
 
+function createPet(name, species){
+  newPet.setName(name);
+  newPet.setSpecies(species);
+  $("#petName").append(name);
+  $("#petSpecies").append(species);
+  if (species == "Bulbasaur") {
+    $("#petImage").append('<img src="img/Bulbasaur.png" weight="200px" height="200px" />');
+  } else if (species == "Charmander") {
+    $("#petImage").append('<img src="img/Charmander.png" weight="200px" height="200px" />');
+  } else {
+    $("#petImage").append('<img src="img/Squirtle.png" weight="200px" height="200px" />');
+  }
+}
+
+function startTimer(){
+  $("#display-time").empty().append("0:00");
+  let hour = 0;
+  let minute = 0;
+  let newTimer = setInterval(function() {
+    minute++
+    if(minute > 59){
+      minute = 0;
+      hour++;
+    }
+    if(minute < 10){
+      $("#display-time").empty().append(hour + ":0" + minute);
+    } else {
+      $("#display-time").empty().append(hour + ":" + minute);
+    }
+    $("#hunger-log").empty().append(newPet.setHunger());
+    $("#hunger-bar").val(newPet.foodLevel);
+    $("#exercise-log").empty().append(newPet.setExercise());
+    $("#sleep-log").empty().append(newPet.setSleepiness());
+    $("#happiness-log").empty().append(newPet.setHappiness());
+  }, 1000);
+}
+
+
 $(document).ready(function() {
   $("form#start").submit(function(event) {
     event.preventDefault();
     let petName = $("#name").val();
     let petSpecies = $("input[name='select-pokemon']:checked").val();
-    newPet.setName(petName);
-    $("#petName").append(petName);
-    $("#petSpecies").append(petSpecies);
-    newPet.setSpecies(petSpecies);
-    if (petSpecies == "Bulbasaur") {
-      $("#petImage").append('<img src="img/Bulbasaur.png" weight="200px" height="200px" />');
-    } else if (petSpecies == "Charmander") {
-      $("#petImage").append('<img src="img/Charmander.png" weight="200px" height="200px" />');
-    } else {
-      $("#petImage").append('<img src="img/Squirtle.png" weight="200px" height="200px" />');
-    }
+    createPet(petName, petSpecies);
+    startTimer();
     $("form#start").hide();
     $(".game").show();
-    $("#text-box").append(newPet.setHunger());
-    $("#text-box").append(newPet.setExercise());
-    $("#text-box").append(newPet.setSleepiness());
-    $("#text-box").append(newPet.setHappiness());
   });
 
   $("form#feed").submit(function(event) {
